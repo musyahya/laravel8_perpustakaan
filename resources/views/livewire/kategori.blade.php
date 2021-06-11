@@ -1,8 +1,28 @@
 <div class="row">
     <div class="col-12">
+
+    @if (session('sukses'))
+        <div class="alert alert-success">
+            {{session('sukses')}}
+        </div>
+    @endif
+
+    @if ($create)
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="nama">Kategori</label>
+                    <input wire:model="nama" type="text" class="form-control" id="nama" name="nama">
+                    @error('nama') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+                <span wire:click="store" class="btn btn-sm btn-success">Simpan</span>
+            </div>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-header">
-        <span class="btn btn-sm btn-primary">Tambah</span>
+        <span wire:click="create" class="btn btn-sm btn-primary">Tambah</span>
 
         <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
