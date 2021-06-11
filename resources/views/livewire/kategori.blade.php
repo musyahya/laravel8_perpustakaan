@@ -20,6 +20,19 @@
         </div>
     @endif
 
+    @if ($edit)
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="nama">Kategori</label>
+                    <input wire:model="nama" type="text" class="form-control" id="nama" name="nama">
+                    @error('nama') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+                <span wire:click="update({{$kategori_id}})" class="btn btn-sm btn-success">Update</span>
+            </div>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-header">
         <span wire:click="create" class="btn btn-sm btn-primary">Tambah</span>
@@ -53,7 +66,7 @@
                     <td>{{$item->nama}}</td>
                     <td>
                          <div class="btn-group">
-                            <span class="btn btn-sm btn-primary mr-2">Edit</span>
+                            <span wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Edit</span>
                             <span class="btn btn-sm btn-danger">Hapus</span>
                         </div>
                     </td>
