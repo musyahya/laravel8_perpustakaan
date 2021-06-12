@@ -3,9 +3,9 @@
 
     @include('admin-lte/flash')
 
-    {{-- @include('petugas/kategori/create')
-    @include('petugas/kategori/edit')
-    @include('petugas/kategori/delete') --}}
+    @include('petugas/rak/create')
+    {{-- @include('petugas/kategori/edit') --}}
+    {{-- @include('petugas/kategori/delete') --}}
 
     <div class="card">
         <div class="card-header">
