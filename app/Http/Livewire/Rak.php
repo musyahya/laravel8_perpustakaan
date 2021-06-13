@@ -100,7 +100,7 @@ class Rak extends Component
     public function render()
     {
         return view('livewire.rak', [
-            'raks' => ModelsRak::latest()->paginate(3)
+            'raks' => ModelsRak::latest()->paginate(5)
         ]);
     }
 

@@ -18,7 +18,7 @@ class RakSeeder extends Seeder
             Rak::create([
                 'rak' => 1,
                 'baris' => $i,
-                'kategori_id' => 1,
+                'kategori_id' => 2,
                 'slug' => 1 .'-' .$i
             ]);
         }

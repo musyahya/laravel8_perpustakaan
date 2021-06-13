@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Kategori as ModelsKategori;
+use App\Models\Rak;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
@@ -72,7 +73,13 @@ class Kategori extends Component
 
     public function destroy(ModelsKategori $kategori)
     {
-        $kategori->rak()->delete();
+        $rak = Rak::where('kategori_id', $kategori->id)->get();
+        foreach ($rak as $key => $value) {
+            $value->update([
+                'kategori_id' => 1
+            ]);
+        }
+
         $kategori->delete();
 
         session()->flash('sukses', 'Data berhasil dihapus');
