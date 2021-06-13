@@ -5,7 +5,7 @@
 
     @include('petugas/rak/create')
     @include('petugas/rak/edit')
-    {{-- @include('petugas/kategori/delete') --}}
+    @include('petugas/rak/delete')
 
     <div class="card">
         <div class="card-header">
