@@ -10,4 +10,5 @@ class Penerbit extends Model
     use HasFactory;
 
     protected $table = 'penerbit';
+    protected $fillable = ['nama', 'slug'];
 }

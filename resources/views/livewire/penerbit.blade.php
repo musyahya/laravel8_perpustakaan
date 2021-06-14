@@ -3,7 +3,7 @@
 
     @include('admin-lte/flash')
 
-    {{-- @include('petugas/rak/create') --}}
+    @include('petugas/penerbit/create')
     {{-- @include('petugas/rak/edit') --}}
     {{-- @include('petugas/rak/delete') --}}
 
