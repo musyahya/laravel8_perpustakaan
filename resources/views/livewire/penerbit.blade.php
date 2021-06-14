@@ -5,7 +5,7 @@
 
     @include('petugas/penerbit/create')
     @include('petugas/penerbit/edit')
-    {{-- @include('petugas/rak/delete') --}}
+    @include('petugas/penerbit/delete')
 
     <div class="card">
         <div class="card-header">
