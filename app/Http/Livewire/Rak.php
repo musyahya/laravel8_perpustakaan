@@ -15,6 +15,10 @@ class Rak extends Component
     public $create, $edit, $delete;
     public $rak, $baris, $kategori, $kategori_id, $rak_id;
 
+    protected $validationAttributes = [
+        'kategori_id' => 'kategori'
+    ];
+
     public function create()
     {
         $this->create = true;
