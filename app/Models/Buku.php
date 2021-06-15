@@ -10,4 +10,9 @@ class Buku extends Model
     use HasFactory;
 
     protected $table = 'buku';
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

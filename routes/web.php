@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Petugas\BukuController;
 use App\Http\Controllers\Petugas\KategoriController;
 use App\Http\Controllers\Petugas\PenerbitController;
 use App\Http\Controllers\Petugas\RakController;
@@ -31,3 +32,4 @@ Route::get('/dashboard', function () {
 Route::get('/kategori', KategoriController::class);
 Route::get('/rak', RakController::class);
 Route::get('/penerbit', PenerbitController::class);
+Route::get('/buku', BukuController::class);

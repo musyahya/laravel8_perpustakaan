@@ -34,8 +34,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="/dashboard" class="nav-link active">
+          <li class="nav-item">
+            <a href="/dashboard" class="nav-link @yield('active-dashboard')">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -44,7 +44,7 @@
           </li>
             <li class="nav-header">MASTER</li>
           <li class="nav-item">
-            <a href="/kategori" class="nav-link">
+            <a href="/kategori" class="nav-link @yield('active-kategori')">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Kategori
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/rak" class="nav-link">
+            <a href="/rak" class="nav-link @yield('active-rak')">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Rak
@@ -60,10 +60,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/penerbit" class="nav-link">
+            <a href="/penerbit" class="nav-link @yield('active-penerbit')">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Penerbit
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/buku" class="nav-link @yield('active-buku')">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Buku
               </p>
             </a>
           </li>
