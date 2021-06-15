@@ -3,7 +3,7 @@
 
     @include('admin-lte/flash')
 
-    {{-- @include('petugas/rak/create') --}}
+    @include('petugas/buku/create')
     {{-- @include('petugas/rak/edit') --}}
     {{-- @include('petugas/rak/delete') --}}
 
@@ -40,7 +40,7 @@
             @foreach ($buku as $item)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td><img src="/img/{{$item->sampul}}" alt="{{$item->judul}}" width="60" height="80"></td>
+                    <td><img src="/storage/{{$item->sampul}}" alt="{{$item->judul}}" width="60" height="80"></td>
                     <td>{{$item->judul}}</td>
                     <td>{{$item->penulis}}</td>
                     <td>{{$item->kategori->nama}}</td>
