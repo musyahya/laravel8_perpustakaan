@@ -18,9 +18,9 @@ class Buku extends Component
     protected $paginationTheme = 'bootstrap';
     use WithFileUploads;
 
-    public $create, $edit, $delete;
+    public $create, $edit, $delete, $show;
     public $kategori, $rak, $penerbit;
-    public $kategori_id, $rak_id, $penerbit_id;
+    public $kategori_id, $rak_id, $penerbit_id, $baris;
     public $judul, $stok, $penulis, $sampul, $buku_id;
 
     protected $rules = [
@@ -68,6 +68,21 @@ class Buku extends Component
 
         session()->flash('sukses', 'Data berhasil ditambahkan.');
         $this->format();
+    }
+
+    public function show(ModelsBuku $buku)
+    {
+        $this->format();
+
+        $this->show = true;
+        $this->judul = $buku->judul;
+        $this->sampul = $buku->sampul;
+        $this->penulis = $buku->penulis;
+        $this->stok = $buku->stok;
+        $this->kategori = $buku->kategori->nama;
+        $this->penerbit = $buku->penerbit->nama;
+        $this->rak = $buku->rak->rak;
+        $this->baris = $buku->rak->baris;
     }
 
     public function edit(ModelsBuku $buku)
@@ -155,6 +170,7 @@ class Buku extends Component
         unset($this->create);
         unset($this->delete);
         unset($this->edit);
+        unset($this->show);
         unset($this->buku_id);
         unset($this->judul);
         unset($this->sampul);
