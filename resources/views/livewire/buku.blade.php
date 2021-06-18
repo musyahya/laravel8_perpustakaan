@@ -4,7 +4,7 @@
     @include('admin-lte/flash')
 
     @include('petugas/buku/create')
-    {{-- @include('petugas/rak/edit') --}}
+    @include('petugas/buku/edit')
     {{-- @include('petugas/rak/delete') --}}
 
     <div class="card">
