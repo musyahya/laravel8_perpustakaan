@@ -41,12 +41,12 @@
                                     <tr>
                                         <th>Rak</th>
                                         <td>:</td>
-                                        <td>{{$rak}}</td>
+                                        <td>{{$rak == 0 ? 'none' : $rak}}</td>
                                     </tr>
                                     <tr>
                                         <th>Baris</th>
                                         <td>:</td>
-                                        <td>{{$baris}}</td>
+                                        <td>{{$baris == 0 ? 'none' : $baris}}</td>
                                     </tr>
                                     <tr>
                                         <th>Stok</th>

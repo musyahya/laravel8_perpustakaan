@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Buku;
 use App\Models\Kategori as ModelsKategori;
 use App\Models\Rak;
 use Livewire\Component;
@@ -75,6 +76,13 @@ class Kategori extends Component
     {
         $rak = Rak::where('kategori_id', $kategori->id)->get();
         foreach ($rak as $key => $value) {
+            $value->update([
+                'kategori_id' => 1
+            ]);
+        }
+
+        $buku = Buku::where('kategori_id', $kategori->id)->get();
+        foreach ($buku as $key => $value) {
             $value->update([
                 'kategori_id' => 1
             ]);

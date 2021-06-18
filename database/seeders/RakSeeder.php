@@ -14,6 +14,13 @@ class RakSeeder extends Seeder
      */
     public function run()
     {
+        Rak::create([
+            'rak' => 0,
+            'baris' => 0,
+            'kategori_id' => 1,
+            'slug' => 0
+        ]);
+
         for ($i=1; $i <= 5; $i++) {
             Rak::create([
                 'rak' => 1,
@@ -23,6 +30,13 @@ class RakSeeder extends Seeder
             ]);
         }
 
-        
+        for ($i = 1; $i <= 5; $i++) {
+            Rak::create([
+                'rak' => 2,
+                'baris' => $i,
+                'kategori_id' => 3,
+                'slug' => 2 . '-' . $i
+            ]);
+        }
     }
 }

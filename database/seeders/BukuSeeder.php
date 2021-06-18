@@ -20,9 +20,9 @@ class BukuSeeder extends Seeder
             'slug' => Str::slug('bintang'),
             'sampul' => 'buku/Sampul_novel_Bintang.jpeg',
             'penulis' => 'tere liye',
-            'penerbit_id' => 1,
+            'penerbit_id' => 2,
             'kategori_id' => 2,
-            'rak_id' => 1,
+            'rak_id' => 2,
             'stok' => 10
         ]);
 
@@ -31,9 +31,9 @@ class BukuSeeder extends Seeder
             'slug' => Str::slug('matahari'),
             'sampul' => 'buku/Sampul_novel_Matahari.jpeg',
             'penulis' => 'tere liye',
-            'penerbit_id' => 1,
+            'penerbit_id' => 3,
             'kategori_id' => 2,
-            'rak_id' => 1,
+            'rak_id' => 3,
             'stok' => 10
         ]);
     }
