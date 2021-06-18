@@ -39,7 +39,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
-                                <select wire:model="kategori_id" class="form-control" id="kategori">
+                                <select wire:model="kategori_id" wire:click="pilihKategori" class="form-control" id="kategori">
                                     <option selected value="">Pilih Kategori</option>
                                     @foreach ($kategori as $item)
                                         @if ($item->id != 1)
@@ -67,9 +67,11 @@
                                 <label for="rak">Rak</label>
                                 <select wire:model="rak_id" class="form-control" id="rak">
                                     <option selected value="">Pilih Rak</option>
-                                    @foreach ($rak as $item)
-                                        <option value="{{$item->id}}">Rak : {{$item->rak}}, Baris : {{$item->baris}}</option>
-                                    @endforeach
+                                    @isset($rak)
+                                        @foreach ($rak as $item)
+                                            <option value="{{$item->id}}">Rak : {{$item->rak}}, Baris : {{$item->baris}}</option>
+                                        @endforeach
+                                    @endisset
                                 </select>
                                 @error('rak_id') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>

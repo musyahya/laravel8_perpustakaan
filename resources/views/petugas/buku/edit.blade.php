@@ -39,7 +39,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="kategori">Kategori</label>
-                                <select wire:model="kategori_id" class="form-control" id="kategori">
+                                <select wire:model="kategori_id" wire:click="pilihKategori" class="form-control" id="kategori">
                                     <option selected value="">Pilih Kategori</option>
                                     @foreach ($kategori as $item)
                                         @if ($item->id != 1)
