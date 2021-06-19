@@ -42,9 +42,7 @@
                                 <select wire:model="kategori_id" wire:click="pilihKategori" class="form-control" id="kategori">
                                     <option selected value="">Pilih Kategori</option>
                                     @foreach ($kategori as $item)
-                                        @if ($item->id != 1)
-                                            <option value="{{$item->id}}">{{$item->nama}}</option>
-                                        @endif                   
+                                       <option value="{{$item->id}}">{{$item->nama}}</option>             
                                     @endforeach
                                 </select>
                                 @error('kategori_id') <small class="text-danger">{{ $message }}</small> @enderror

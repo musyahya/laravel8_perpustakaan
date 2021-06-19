@@ -98,7 +98,7 @@ class Kategori extends Component
     public function render()
     {
         return view('livewire.kategori', [
-            'kategori' => ModelsKategori::latest()->paginate(3)
+            'kategori' => ModelsKategori::latest()->paginate(5)
         ]);
     }
 
