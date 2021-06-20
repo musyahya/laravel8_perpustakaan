@@ -24,6 +24,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/cek-role', function () {
+    if (auth()->user()->hasRole(['admin', 'petugas'])) {
+        return redirect('/dashboard');
+    } else {
+        return redirect('/');
+    }
+    
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::middleware(['auth', 'role:admin|petugas'])->group(function () {
