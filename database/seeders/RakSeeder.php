@@ -38,5 +38,14 @@ class RakSeeder extends Seeder
                 'slug' => 2 . '-' . $i
             ]);
         }
+       
+        for ($i = 1; $i <= 5; $i++) {
+            Rak::create([
+                'rak' => 3,
+                'baris' => $i,
+                'kategori_id' => 6,
+                'slug' => 3 . '-' . $i
+            ]);
+        }
     }
 }
