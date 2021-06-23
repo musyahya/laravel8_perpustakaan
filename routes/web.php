@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Peminjam\BukuController as PeminjamBukuController;
 use App\Http\Controllers\Petugas\BukuController;
 use App\Http\Controllers\Petugas\KategoriController;
 use App\Http\Controllers\Petugas\PenerbitController;
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', PeminjamBukuController::class);
 
 Auth::routes();
 
