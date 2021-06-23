@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CekRoleController;
 use App\Http\Controllers\Peminjam\BukuController as PeminjamBukuController;
 use App\Http\Controllers\Petugas\BukuController;
 use App\Http\Controllers\Petugas\KategoriController;
@@ -23,14 +24,7 @@ Route::get('/', PeminjamBukuController::class);
 
 Auth::routes();
 
-Route::get('/cek-role', function () {
-    if (auth()->user()->hasRole(['admin', 'petugas'])) {
-        return redirect('/dashboard');
-    } else {
-        return redirect('/');
-    }
-    
-});
+Route::get('/cek-role', CekRoleController::class)->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 

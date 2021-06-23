@@ -14,7 +14,7 @@ class Buku extends Component
     public function render()
     {
         return view('livewire.peminjam.buku', [
-            'buku' => ModelsBuku::latest()->paginate(4)
+            'buku' => ModelsBuku::latest()->paginate(12)
         ]);
     }
 }
