@@ -3,5 +3,5 @@
 @section('active-penerbit', 'active')
 
 @section('content')
-    <livewire:penerbit></livewire:penerbit>
+    <livewire:petugas.penerbit></livewire:petugas.penerbit>
 @endsection

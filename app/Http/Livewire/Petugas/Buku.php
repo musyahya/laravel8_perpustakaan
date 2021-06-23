@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Petugas;
 
 use App\Models\Buku as ModelsBuku;
 use App\Models\Kategori;
@@ -164,7 +164,7 @@ class Buku extends Component
 
     public function render()
     {
-        return view('livewire.buku', [
+        return view('livewire.petugas.buku', [
             'buku' => ModelsBuku::latest()->paginate(5)
         ]);
     }

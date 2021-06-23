@@ -3,5 +3,5 @@
 @section('active-buku', 'active')
 
 @section('content')
-    <livewire:buku></livewire:buku>
+    <livewire:petugas.buku></livewire:petugas.buku>
 @endsection

@@ -5,7 +5,7 @@
 
     <div class="row">
         @foreach ($buku as $item)
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="card mb-4 shadow" style="cursor: pointer">
                 <img src="/storage/{{$item->sampul}}" class="card-img-top" alt="{{$item->judul}}" width="200" height="300">
                 <div class="card-body">
