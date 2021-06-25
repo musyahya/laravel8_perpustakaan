@@ -26,4 +26,9 @@ class Buku extends Model
     {
         return $this->belongsTo(Rak::class);
     }
+
+    public function buku()
+    {
+        return $this->hasMany(DetailPeminjaman::class);
+    }
 }
