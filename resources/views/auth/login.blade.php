@@ -8,6 +8,8 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    @include('admin-lte/flash')
+                    
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

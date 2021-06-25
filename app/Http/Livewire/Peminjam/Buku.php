@@ -3,9 +3,12 @@
 namespace App\Http\Livewire\Peminjam;
 
 use App\Models\Buku as ModelsBuku;
+use App\Models\DetailPeminjaman;
 use App\Models\Kategori;
+use App\Models\Peminjaman;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
 
 class Buku extends Component
 {
@@ -36,6 +39,68 @@ class Buku extends Component
         $this->format();
         $this->detail_buku = true;
         $this->buku_id = $id;
+    }
+
+    public function keranjang(ModelsBuku $buku)
+    {
+        // user harus login
+        if (auth()->user()) {
+            
+            // role peminjam
+            if (auth()->user()->hasRole('peminjam')) {
+               
+                $peminjaman_lama = DB::table('peminjaman')
+                    ->join('detail_peminjaman', 'peminjaman.id', '=', 'detail_peminjaman.peminjaman_id')
+                    ->where('peminjam_id', auth()->user()->id)
+                    ->where('status', '!=', 3)
+                    ->get();
+
+                // jumlah maksimal 2
+                if ($peminjaman_lama->count() == 2) {
+                    session()->flash('gagal', 'Buku yang dipinjam maksimal 2');
+                } else {
+
+                    // peminjaman sudah ada isinya
+                    if ($peminjaman_lama->count() == 0) {
+                        $peminjaman_baru = Peminjaman::create([
+                            'kode_pinjam' => random_int(100000000, 999999999),
+                            'peminjam_id' => auth()->user()->id,
+                            'status' => 0
+                        ]);
+
+                        DetailPeminjaman::create([
+                            'peminjaman_id' => $peminjaman_baru->id,
+                            'buku_id' => $buku->id
+                        ]);
+
+                        session()->flash('sukses', 'Buku berhasil ditambahkan ke dalam keranjang');
+                    } else {
+
+                        if ($peminjaman_lama[0]->buku_id == $buku->id) {
+                            session()->flash('gagal', 'Buku tidak boleh sama');
+                        } else {
+
+                            DetailPeminjaman::create([
+                                'peminjaman_id' => $peminjaman_lama[0]->id,
+                                'buku_id' => $buku->id
+                            ]);
+
+                            session()->flash('sukses', 'Buku berhasil ditambahkan ke dalam keranjang');
+                        }
+
+                    }
+
+                }
+
+            } else {
+                session()->flash('gagal', 'Role user anda bukan peminjam');
+            }
+
+        } else {
+            session()->flash('gagal', 'Anda harus login terlebih dahulu');
+            redirect('/login');
+        }
+        
     }
 
     public function updatingSearch()

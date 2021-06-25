@@ -1,4 +1,6 @@
 <div class="container">
+    @include('admin-lte/flash')
+
     <div class="row">
         <div class="col-md-12 mb-3">
             <h1>{{$title}}</h1>
@@ -52,7 +54,7 @@
                   </tbody>
                 </table>
 
-                <button class="btn btn-success">Keranjang</button>
+                <button wire:click="keranjang({{$buku->id}})" class="btn btn-success">Keranjang</button>
             </div>
         </div>
 
