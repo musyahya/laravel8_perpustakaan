@@ -52,7 +52,7 @@
                   </tbody>
                 </table>
 
-                <button class="btn btn-success">Pinjam</button>
+                <button class="btn btn-success">Keranjang</button>
             </div>
         </div>
 
