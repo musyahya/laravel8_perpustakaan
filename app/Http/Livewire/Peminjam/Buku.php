@@ -73,6 +73,7 @@ class Buku extends Component
                             'buku_id' => $buku->id
                         ]);
 
+                        $this->emit('tambahKeranjang');
                         session()->flash('sukses', 'Buku berhasil ditambahkan ke dalam keranjang');
                     } else {
 
@@ -86,6 +87,7 @@ class Buku extends Component
                                 'buku_id' => $buku->id
                             ]);
 
+                            $this->emit('tambahKeranjang');
                             session()->flash('sukses', 'Buku berhasil ditambahkan ke dalam keranjang');
                         }
 
