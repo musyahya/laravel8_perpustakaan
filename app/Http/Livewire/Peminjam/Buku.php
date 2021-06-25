@@ -60,7 +60,7 @@ class Buku extends Component
                     session()->flash('gagal', 'Buku yang dipinjam maksimal 2');
                 } else {
 
-                    // peminjaman sudah ada isinya
+                    // peminjaman belum ada isinya
                     if ($peminjaman_lama->count() == 0) {
                         $peminjaman_baru = Peminjaman::create([
                             'kode_pinjam' => random_int(100000000, 999999999),
@@ -76,12 +76,13 @@ class Buku extends Component
                         session()->flash('sukses', 'Buku berhasil ditambahkan ke dalam keranjang');
                     } else {
 
+                        // buku tidak boleh sama
                         if ($peminjaman_lama[0]->buku_id == $buku->id) {
                             session()->flash('gagal', 'Buku tidak boleh sama');
                         } else {
 
                             DetailPeminjaman::create([
-                                'peminjaman_id' => $peminjaman_lama[0]->id,
+                                'peminjaman_id' => $peminjaman_lama[0]->peminjaman_id,
                                 'buku_id' => $buku->id
                             ]);
 
