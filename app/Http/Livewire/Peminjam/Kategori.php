@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Kategori extends Component
 {
-    protected $listeners = ['tambahKeranjang'];
+    protected $listeners = ['tambahKeranjang', 'kurangiKeranjang'];
 
     public $count;
 
@@ -36,6 +36,11 @@ class Kategori extends Component
     public function tambahKeranjang()
     {
         $this->count += 1;
+    }
+
+    public function kurangiKeranjang()
+    {
+        $this->count -= 1;
     }
 
     public function render()

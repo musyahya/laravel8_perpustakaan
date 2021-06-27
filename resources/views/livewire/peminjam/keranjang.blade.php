@@ -5,6 +5,8 @@
         </div>
     </div>
 
+    @include('admin-lte/flash')
+
     <div class="row">
         <div class="col-md-12 mb-4">
             <label for="tanggal_pinjam">Tanggal Pinjam</label>
@@ -34,7 +36,7 @@
                             <td>{{$item->buku->penulis}}</td>
                             <td>{{$item->buku->rak->rak}}</td>
                             <td>{{$item->buku->rak->baris}}</td>
-                            <td><button class="btn btn-sm btn-danger">Hapus</button></td>
+                            <td><button wire:click="hapus({{$keranjang->id}}, {{$item->id}})" class="btn btn-sm btn-danger">Hapus</button></td>
                         </tr>
                     @endforeach
                 </tbody>
