@@ -114,7 +114,11 @@ class Buku extends Component
     public function render()
     {
         if ($this->pilih_kategori) {
-            $buku = ModelsBuku::latest()->where('kategori_id', $this->kategori_id)->paginate(12);
+            if ($this->search) {
+                $buku = ModelsBuku::latest()->where('judul', 'like', '%'. $this->search .'%')->where('kategori_id', $this->kategori_id)->paginate(12);
+            } else {
+                $buku = ModelsBuku::latest()->where('kategori_id', $this->kategori_id)->paginate(12);
+            }
             $title = Kategori::find($this->kategori_id)->nama;
         }elseif ($this->detail_buku) {
             $buku = ModelsBuku::find($this->buku_id);

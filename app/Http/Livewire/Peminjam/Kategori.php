@@ -24,12 +24,12 @@ class Kategori extends Component
     }
 
     public function pilihKategori($id)
-    {   
+    {
         $this->emit('pilihKategori', $id);
     }
-    
+
     public function semuaKategori()
-    {   
+    {
         $this->emit('semuaKategori');
     }
 
