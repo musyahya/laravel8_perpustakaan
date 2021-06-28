@@ -17,7 +17,7 @@ class Buku extends Component
 
     protected $listeners = ['pilihKategori', 'semuaKategori'];
 
-    public $kategori_id, $pilih_kategori, $buku_id, $detail_buku;
+    public $kategori_id, $pilih_kategori, $buku_id, $detail_buku, $search;
 
     public function pilihKategori($id)
     {
@@ -120,7 +120,11 @@ class Buku extends Component
             $buku = ModelsBuku::find($this->buku_id);
             $title = 'Detail Buku';
         } else {
-            $buku = ModelsBuku::latest()->paginate(12);
+            if ($this->search) {
+                $buku = ModelsBuku::latest()->where('judul', 'like', '%'. $this->search .'%')->paginate(12);
+            } else {
+                $buku = ModelsBuku::latest()->paginate(12);
+            }
             $title = 'Semua Buku';
         }
         
