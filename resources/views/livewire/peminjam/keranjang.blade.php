@@ -15,9 +15,15 @@
     </div>
 
     <div class="row">
+        <div class="col-md-12 mb-2">
+            <button wire:click="hapusMasal" class="btn btn-sm btn-danger">Hapus Masal</button>
+            <strong class="float-right">Kode Pinjam : {{$keranjang->kode_pinjam}}</strong>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-12">
              <table class="table table-hover text-nowrap">
-                <strong>Kode Pinjam : {{$keranjang->kode_pinjam}}</strong>
                 <thead>
                 <tr>
                     <th>No</th>
