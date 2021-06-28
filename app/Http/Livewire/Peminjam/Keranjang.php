@@ -28,8 +28,12 @@ class Keranjang extends Component
 
     public function render()
     {
+        $keranjang = Peminjaman::latest()->where('peminjam_id', auth()->user()->id)->where('status', '!=', 3)->first();
+        if (!$keranjang) {
+            redirect('/');
+        }
         return view('livewire.peminjam.keranjang', [
-            'keranjang' => Peminjaman::latest()->where('peminjam_id', auth()->user()->id)->where('status', '!=', 3)->first()
+            'keranjang' => $keranjang
         ]);
     }
 }
