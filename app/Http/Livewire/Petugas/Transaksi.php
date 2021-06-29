@@ -31,6 +31,16 @@ class Transaksi extends Component
         $this->selesai_dipinjam = true;
     }
 
+    public function pinjam(Peminjaman $peminjaman)
+    {
+        $peminjaman->update([
+            'petugas_pinjam' => auth()->user()->id,
+            'status' => 2
+        ]);
+
+        session()->flash('sukses', 'Buku berhasil dipinjam.');
+    }
+
     public function render()
     {
         if ($this->belum_dipinjam) {
@@ -42,7 +52,6 @@ class Transaksi extends Component
         } else {
             $transaksi = Peminjaman::latest()->where('status', '!=', 0)->paginate(5);
         }
-        // dd($transaksi);
         return view('livewire.petugas.transaksi', [
             'transaksi' => $transaksi
         ]);
