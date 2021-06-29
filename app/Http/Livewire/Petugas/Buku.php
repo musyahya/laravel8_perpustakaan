@@ -21,7 +21,7 @@ class Buku extends Component
     public $create, $edit, $delete, $show;
     public $kategori, $rak, $penerbit;
     public $kategori_id, $rak_id, $penerbit_id, $baris;
-    public $judul, $stok, $penulis, $sampul, $buku_id;
+    public $judul, $stok, $penulis, $sampul, $buku_id, $search;
 
     protected $rules = [
         'judul' => 'required',
@@ -162,11 +162,20 @@ class Buku extends Component
         $this->format();
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        return view('livewire.petugas.buku', [
-            'buku' => ModelsBuku::latest()->paginate(5)
-        ]);
+        if ($this->search) {
+            $buku = ModelsBuku::latest()->where('judul', 'like', '%'. $this->search .'%')->paginate(5);
+        } else {
+            $buku = ModelsBuku::latest()->paginate(5);
+        }
+        
+        return view('livewire.petugas.buku', compact('buku'));
     }
 
     public function format()
