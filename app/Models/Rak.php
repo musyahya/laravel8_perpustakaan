@@ -21,4 +21,10 @@ class Rak extends Model
     {
         return $this->hasMany(Buku::class);
     }
+
+    // accesor
+    public function getLokasiAttribute()
+    {
+        return "Rak : {$this->rak}, Baris : {$this->baris}";
+    }
 }

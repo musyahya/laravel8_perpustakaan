@@ -64,12 +64,12 @@
                        <td>
                             <ul>
                                 @foreach ($item->detail_peminjaman as $detail_peminjaman)
-                                <li>Rak : {{$detail_peminjaman->buku->rak->rak}}, Baris : {{$detail_peminjaman->buku->rak->baris}}</li>
+                                <li>{{$detail_peminjaman->buku->rak->lokasi}}</li>
                                 @endforeach
                             </ul>
                         </td>
-                        <td>{{\Carbon\Carbon::create($item->tanggal_pinjam)->format('d-m-Y')}}</td>
-                        <td>{{\Carbon\Carbon::create($item->tanggal_kembali)->format('d-m-Y')}}</td>
+                        <td>{{$item->tanggal_pinjam}}</td>
+                        <td>{{$item->tanggal_kembali}}</td>
                         <td>{{$item->denda}}</td>
                         <td>
                             @if ($item->status == 1)

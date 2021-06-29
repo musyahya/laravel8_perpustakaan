@@ -42,7 +42,7 @@ class Transaksi extends Component
         } else {
             $transaksi = Peminjaman::latest()->where('status', '!=', 0)->paginate(5);
         }
-        
+        // dd($transaksi);
         return view('livewire.petugas.transaksi', [
             'transaksi' => $transaksi
         ]);
