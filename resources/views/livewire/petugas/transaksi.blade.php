@@ -34,6 +34,7 @@
                     <th>Buku</th>
                     <th>Lokasi</th>
                     <th>Tanggal Pinjam</th>
+                    <th>Tanggal Kembali</th>
                     <th>Status</th>
                     <th width="15%">Aksi</th>
                 </tr>
@@ -58,6 +59,7 @@
                             </ul>
                         </td>
                         <td>{{\Carbon\Carbon::create($item->tanggal_pinjam)->format('d-m-Y')}}</td>
+                        <td>{{\Carbon\Carbon::create($item->tanggal_kembali)->format('d-m-Y')}}</td>
                         <td>
                             @if ($item->status == 1)
                                 <span class="badge bg-indigo">Belum Dipinjam</span>
