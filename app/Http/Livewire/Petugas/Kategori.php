@@ -14,7 +14,7 @@ class Kategori extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $create, $edit, $delete, $nama, $kategori_id;
+    public $create, $edit, $delete, $nama, $kategori_id, $search;
 
     protected $rules = [
         'nama' => 'required|min:5',
@@ -95,10 +95,21 @@ class Kategori extends Component
         $this->format();
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
+        if ($this->search) {
+            $kategori = ModelsKategori::latest()->where('nama', 'like', '%'. $this->search .'%')->paginate(5);
+        } else {
+            $kategori = ModelsKategori::latest()->paginate(5);
+        }
+        
         return view('livewire.petugas.kategori', [
-            'kategori' => ModelsKategori::latest()->paginate(5)
+            'kategori' => $kategori
         ]);
     }
 
