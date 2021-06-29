@@ -31,4 +31,10 @@ class Buku extends Model
     {
         return $this->hasMany(DetailPeminjaman::class);
     }
+
+    // mutator
+    public function setJudulAttribute($value)
+    {
+        $this->attributes['judul'] = ucfirst($value);
+    }
 }
