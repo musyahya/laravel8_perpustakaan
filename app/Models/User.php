@@ -46,4 +46,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Peminjaman::class);
     }
+
+    // accesor
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucfirst($value);
+    }
 }
