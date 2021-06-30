@@ -81,7 +81,7 @@
                                 @if ($item->status == 1)
                                     <span wire:click="pinjam({{$item->id}})" class="btn btn-sm btn-success mr-2">Pinjam</span>
                                 @elseif ($item->status == 2)
-                                    <span wire:click="edit({{$item->id}})" class="btn btn-sm btn-primary mr-2">Kembali</span>
+                                    <span wire:click="kembali({{$item->id}})" class="btn btn-sm btn-primary mr-2">Kembali</span>
                                 @endif
                             </td>
                        @endif

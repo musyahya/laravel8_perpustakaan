@@ -24,7 +24,8 @@ class TransaksiSeeder extends Seeder
             'status' => 3,
             'denda' => 0,
             'tanggal_pinjam' => now()->subDays(20),
-            'tanggal_kembali' => now()->subDays(11)
+            'tanggal_kembali' => now()->subDays(10),
+            'tanggal_pengembalian' => now()->subDays(11)
         ]);
         
         DetailPeminjaman::create([
@@ -60,7 +61,7 @@ class TransaksiSeeder extends Seeder
             'kode_pinjam' => random_int(100000000, 999999999),
             'peminjam_id' => 4,
             'status' => 1,
-            'tanggal_pinjam' => now(10),
+            'tanggal_pinjam' => now()->addDays(10),
             'tanggal_kembali' => now()->addDays(20)
         ]);
         
