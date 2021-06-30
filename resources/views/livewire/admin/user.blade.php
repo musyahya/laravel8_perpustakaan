@@ -3,7 +3,7 @@
 
     @include('admin-lte/flash')
 
-    {{-- @include('petugas/penerbit/create') --}}
+    @include('admin/user/create')
 
     <div class="btn-group mb-3">
         <button wire:click="format" class="btn btn-sm bg-teal mr-2">Semua</button>
@@ -14,7 +14,9 @@
 
     <div class="card">
         <div class="card-header">
-        <span wire:click="create" class="btn btn-sm btn-primary">Tambah</span>
+            @if ($admin || $petugas || $peminjam)
+                 <span wire:click="create" class="btn btn-sm btn-primary">Tambah</span>
+            @endif
 
              <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
