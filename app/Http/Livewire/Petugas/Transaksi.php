@@ -12,7 +12,7 @@ class Transaksi extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $belum_dipinjam, $sedang_dipinjam, $selesai_dipinjam;
+    public $belum_dipinjam, $sedang_dipinjam, $selesai_dipinjam, $search;
 
     public function belumDipinjam()
     {
@@ -75,15 +75,28 @@ class Transaksi extends Component
 
     public function render()
     {
-        if ($this->belum_dipinjam) {
-            $transaksi = Peminjaman::latest()->where('status', 1)->paginate(5);
-        }elseif ($this->sedang_dipinjam) {
-            $transaksi = Peminjaman::latest()->where('status', 2)->paginate(5);
-        }elseif ($this->selesai_dipinjam) {
-            $transaksi = Peminjaman::latest()->where('status', 3)->paginate(5);
+        if ($this->search) {
+            if ($this->belum_dipinjam) {
+                $transaksi = Peminjaman::latest()->where('kode_pinjam', 'like', '%'. $this->search .'%')->where('status', 1)->paginate(5);
+            } elseif ($this->sedang_dipinjam) {
+                $transaksi = Peminjaman::latest()->where('kode_pinjam', 'like', '%'. $this->search .'%')->where('status', 2)->paginate(5);
+            } elseif ($this->selesai_dipinjam) {
+                $transaksi = Peminjaman::latest()->where('kode_pinjam', 'like', '%'. $this->search .'%')->where('status', 3)->paginate(5);
+            } else {
+                $transaksi = Peminjaman::latest()->where('kode_pinjam', 'like', '%'. $this->search .'%')->where('status', '!=', 0)->paginate(5);
+            }
         } else {
-            $transaksi = Peminjaman::latest()->where('status', '!=', 0)->paginate(5);
+            if ($this->belum_dipinjam) {
+                $transaksi = Peminjaman::latest()->where('status', 1)->paginate(5);
+            } elseif ($this->sedang_dipinjam) {
+                $transaksi = Peminjaman::latest()->where('status', 2)->paginate(5);
+            } elseif ($this->selesai_dipinjam) {
+                $transaksi = Peminjaman::latest()->where('status', 3)->paginate(5);
+            } else {
+                $transaksi = Peminjaman::latest()->where('status', '!=', 0)->paginate(5);
+            }
         }
+    
         return view('livewire.petugas.transaksi', [
             'transaksi' => $transaksi
         ]);
