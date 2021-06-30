@@ -76,6 +76,18 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-header">ADMIN</li>
+          @role('admin')
+              <li class="nav-item">
+                <a href="/user" class="nav-link @yield('active-user')">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    User
+                  </p>
+                </a>
+              </li>
+          @endrole
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

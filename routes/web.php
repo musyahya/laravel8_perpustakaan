@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CekRoleController;
 use App\Http\Controllers\Peminjam\BukuController as PeminjamBukuController;
 use App\Http\Controllers\Peminjam\KeranjangController;
@@ -44,4 +45,8 @@ Route::middleware(['auth', 'role:admin|petugas'])->group(function () {
 
 Route::middleware(['auth', 'role:peminjam'])->group(function () {
     Route::get('/keranjang', KeranjangController::class);
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/user', UserController::class);
 });
