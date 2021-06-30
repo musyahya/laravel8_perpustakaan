@@ -34,6 +34,12 @@ class Transaksi extends Component
 
     public function pinjam(Peminjaman $peminjaman)
     {
+        foreach ($peminjaman->detail_peminjaman as $detail_peminjaman) {
+            $detail_peminjaman->buku->update([
+                'stok' => $detail_peminjaman->buku->stok -1
+            ]);
+        }
+
         $peminjaman->update([
             'petugas_pinjam' => auth()->user()->id,
             'status' => 2
@@ -50,6 +56,12 @@ class Transaksi extends Component
             'tanggal_pengembalian' => today(),
             'denda' => 0
         ];
+
+        foreach ($peminjaman->detail_peminjaman as $detail_peminjaman) {
+            $detail_peminjaman->buku->update([
+                'stok' => $detail_peminjaman->buku->stok + 1
+            ]);
+        }
 
         if (Carbon::create($peminjaman->tanggal_kembali)->lessThan(today())) {
             $denda = Carbon::create($peminjaman->tanggal_kembali)->diffInDays(today());
