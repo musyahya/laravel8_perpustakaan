@@ -70,18 +70,19 @@
 
           <li class="nav-item">
             <a href="/transaksi" class="nav-link @yield('active-transaksi')">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fas fa-hands"></i>
               <p>
                 Transaksi
               </p>
             </a>
           </li>
-
-          <li class="nav-header">ADMIN</li>
+         
           @role('admin')
+              <li class="nav-header">ADMIN</li>
+
               <li class="nav-item">
                 <a href="/user" class="nav-link @yield('active-user')">
-                  <i class="nav-icon fas fa-th"></i>
+                  <i class="fas fa-users"></i>
                   <p>
                     User
                   </p>
