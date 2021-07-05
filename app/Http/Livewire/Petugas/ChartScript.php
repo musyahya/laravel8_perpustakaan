@@ -11,9 +11,16 @@ class ChartScript extends Component
 {
     public $bulan_tahun;
 
+    protected $listeners = ['ubahBulanTahun'];
+
     public function mount()
     {
         $this->bulan_tahun = date('Y-m');
+    }
+
+    public function ubahBulanTahun()
+    {
+        // 
     }
 
     public function render()
