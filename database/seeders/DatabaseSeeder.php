@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             RakSeeder::class,
             PenerbitSeeder::class,
             BukuSeeder::class,
-            TransaksiSeeder::class
+            TransaksiSeeder::class,
+            PeminjamanSeeder::class,
         ]);;
     }
 }
