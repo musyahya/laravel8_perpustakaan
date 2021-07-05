@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Petugas;
 
 use App\Models\Peminjaman;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -26,15 +27,22 @@ class ChartScript extends Component
             ->whereYear('tanggal_pengembalian', $tahun)
             ->where('status', 3)
             ->get();
-            
-        $count = [];
-        foreach ($selesai_dipinjam as $item) {
-            $count[] = $item->count;
-        }
-            
+
+        $hari_per_bulan = Carbon::parse($this->bulan_tahun)->daysInMonth;
+
         $tanggal_pengembalian = [];
-        foreach ($selesai_dipinjam as $item) {
-            $tanggal_pengembalian[] = substr($item->tanggal_pengembalian, -2);
+        $count = [];
+        for ($i=1; $i <= $hari_per_bulan; $i++) { 
+            for ($j=0; $j < count($selesai_dipinjam); $j++) { 
+                if (substr($selesai_dipinjam[$j]->tanggal_pengembalian, -2) == $i) {
+                    $tanggal_pengembalian[$i] = substr($selesai_dipinjam[$j]->tanggal_pengembalian, -2);
+                    $count[$i] = $selesai_dipinjam[$j]->count;
+                    break;
+                }else {
+                    $tanggal_pengembalian[$i] = $i;
+                    $count[$i] = 0;
+                }
+            }
         }
 
         return view('livewire.petugas.chart-script', compact('count', 'tanggal_pengembalian'));
