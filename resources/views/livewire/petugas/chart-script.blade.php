@@ -20,6 +20,7 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        events: ['mouseout', 'touchstart', 'touchmove'],
         scales: {
             y: {
                 beginAtZero: true
@@ -42,6 +43,7 @@ Livewire.on('ubahBulanTahun', (count, tanggal_pengembalian) => {
             }]
         },
         options: {
+            events: ['mouseout', 'touchstart', 'touchmove'],
             scales: {
                 y: {
                     beginAtZero: true
