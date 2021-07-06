@@ -180,6 +180,10 @@
         </div>
 @endsection
 
+@section('script')
+    @include('admin-lte/script/chart')
+@endsection
+
 @section('chart-script')
     <livewire:petugas.chart-script></livewire:petugas.chart-script>
 @endsection

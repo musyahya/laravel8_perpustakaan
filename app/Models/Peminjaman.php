@@ -32,11 +32,16 @@ class Peminjaman extends Model
    
     public function getTanggalPinjamAttribute($value)
     {
-        return Carbon::create($value)->format('d-m-Y');
+        return Carbon::create($value)->format('d-M-Y');
     }
    
     public function getTanggalKembaliAttribute($value)
     {
-        return Carbon::create($value)->format('d-m-Y');
+        return Carbon::create($value)->format('d-M-Y');
+    }
+   
+    public function getTanggalPengembalianAttribute($value)
+    {
+        return Carbon::create($value)->format('d-M-Y');
     }
 }
