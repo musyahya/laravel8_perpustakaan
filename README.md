@@ -43,7 +43,7 @@ Laravel 8 pepustakaan dibuat oleh :
 **Clone Repository**
 
 ```bash
-git clone https://github.com/musyahya/laravel_8_perpustakaan.git
+git clone https://github.com/musyahya/laravel8_perpustakaan.git
 ```
 
 **Download zip**
