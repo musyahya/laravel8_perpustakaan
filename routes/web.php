@@ -6,6 +6,7 @@ use App\Http\Controllers\Peminjam\BukuController as PeminjamBukuController;
 use App\Http\Controllers\Peminjam\KeranjangController;
 use App\Http\Controllers\Petugas\BukuController;
 use App\Http\Controllers\Petugas\ChartController;
+use App\Http\Controllers\Petugas\DashboardController;
 use App\Http\Controllers\Petugas\KategoriController;
 use App\Http\Controllers\Petugas\PenerbitController;
 use App\Http\Controllers\Petugas\RakController;
@@ -24,9 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
     // role admin dan petugas
     Route::middleware(['role:admin|petugas'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('petugas/dashboard');
-        });
+        Route::get('/dashboard', DashboardController::class);
 
         Route::get('/kategori', KategoriController::class);
         Route::get('/rak', RakController::class);
