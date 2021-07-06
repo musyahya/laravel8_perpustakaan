@@ -42,7 +42,7 @@
                 <p>Selesai Dipinjam</p>
               </div>
               <div class="icon">
-                <i class="far fa-clock"></i>
+                 <i class="far fa-check-circle"></i>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
                 <p>Sedang Dipinjam</p>
               </div>
               <div class="icon">
-               <i class="far fa-check-circle"></i>
+                <i class="far fa-clock"></i>
               </div>
             </div>
           </div>

@@ -26,34 +26,6 @@ class DashboardController extends Controller
         $count_sedang_dipinjam = Peminjaman::where('status', 2)->count();
         $count_selesai_dipinjam = Peminjaman::where('status', 3)->count();
 
-        // chart
-        $bulan = substr(now(), -2);
-        $tahun = substr(now(), 0, 4);
-
-        $selesai_dipinjam = Peminjaman::select(DB::raw('count(*) as count, tanggal_pengembalian'))
-            ->groupBy('tanggal_pengembalian')
-            ->whereMonth('tanggal_pengembalian', $bulan)
-            ->whereYear('tanggal_pengembalian', $tahun)
-            ->where('status', 3)
-            ->get();
-
-        $hari_per_bulan = Carbon::parse(now())->daysInMonth;
-
-        $tanggal_pengembalian = [];
-        $count = [];
-        for ($i = 1; $i <= $hari_per_bulan; $i++) {
-            for ($j = 0; $j < count($selesai_dipinjam); $j++) {
-                if (substr($selesai_dipinjam[$j]->tanggal_pengembalian, -2) == $i) {
-                    $tanggal_pengembalian[$i] = substr($selesai_dipinjam[$j]->tanggal_pengembalian, -2);
-                    $count[$i] = $selesai_dipinjam[$j]->count;
-                    break;
-                } else {
-                    $tanggal_pengembalian[$i] = $i;
-                    $count[$i] = 0;
-                }
-            }
-        }
-
         // terbaru
         $buku = Buku::limit(5)->latest()->get();
         $user = User::role('peminjam')->limit(5)->latest()->get();
@@ -62,7 +34,7 @@ class DashboardController extends Controller
 
         return view('petugas/dashboard/index',
             compact(
-                'count_buku', 'count_user', 'count_sedang_dipinjam', 'count_selesai_dipinjam', 'count', 'tanggal_pengembalian',
+                'count_buku', 'count_user', 'count_sedang_dipinjam', 'count_selesai_dipinjam',
                 'buku', 'user', 'sedang_dipinjam', 'selesai_dipinjam'
             )
         );
