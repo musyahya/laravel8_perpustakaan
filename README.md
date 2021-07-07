@@ -94,6 +94,20 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+## Buat Storage Link
+
+```bash
+php artisan storage:link
+```
+
+## Download Asset Buku
+
+```bash
+https://drive.google.com/drive/folders/1bCEhRhFVnTiRG9YhibUz2lLwFC6SIFNW?usp=sharing
+```
+
+## Buat Folder buku di public dan copy asetnya
+
 ## Jalankan Serve
 
 ```bash
