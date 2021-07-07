@@ -67,6 +67,9 @@ composer install
 copy .env.example menjadi .env
 ```
 
+## Buka Web Server
+
+
 ## Buat database di localhost 
 
 ```bash
@@ -107,6 +110,7 @@ https://drive.google.com/drive/folders/1bCEhRhFVnTiRG9YhibUz2lLwFC6SIFNW?usp=sha
 ```
 
 ## Buat Folder buku di public dan copy asetnya
+
 
 ## Jalankan Serve
 
